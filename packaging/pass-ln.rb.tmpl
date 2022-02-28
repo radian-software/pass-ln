@@ -1,0 +1,37 @@
+class PassLn < Formula
+  desc "Pass extension for creating symbolic links"
+  homepage "https://github.com/raxod502/pass-ln"
+  url "https://github.com/raxod502/pass-ln/releases/download/v${VERSION}/pass-ln-${VERSION}.tar.gz"
+  version "${VERSION}"
+  sha256 "$(sha256sum "out/${VERSION}/pass-ln-${VERSION}.tar.gz" | awk '{print $1}')"
+  license "MIT"
+
+  depends_on "pass"
+
+  def install
+    prefix.install(Dir["*"])
+  end
+
+  test do
+    (testpath/"batch.gpg").write <<~EOS
+      Key-Type: RSA
+      Key-Length: 2048
+      Subkey-Type: RSA
+      Subkey-Length: 2048
+      Name-Real: Testing
+      Name-Email: testing@foo.bar
+      Expire-Date: 1d
+      %no-protection
+      %commit
+    EOS
+    begin
+      system Formula["gnupg"].opt_bin/"gpg", "--batch", "--gen-key", "batch.gpg"
+      system bin/"pass", "init", "Testing"
+      system bin/"pass", "generate", "Email/testing@foo.bar", "15"
+      system bin/"pass", "generate", "Email", "AltEmail"
+      assert_predicate testpath/".password-store/AltEmail/testing@foo.bar.gpg", :exist?
+    ensure
+      system Formula["gnupg"].opt_bin/"gpgconf", "--kill", "gpg-agent"
+    end
+  end
+end

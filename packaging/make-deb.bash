@@ -5,7 +5,7 @@ set -euxo pipefail
 rm -rf tmp
 
 mkdir -p tmp/usr/lib/password-store/extensions
-cp -T ../pass-ln.bash tmp/usr/lib/password-store/extensions/ln.bash
+cp ../pass-ln.bash tmp/usr/lib/password-store/extensions/ln.bash
 
 mkdir -p tmp/DEBIAN
 tee tmp/DEBIAN/control <<EOF >/dev/null

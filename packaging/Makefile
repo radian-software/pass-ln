@@ -9,7 +9,7 @@ deb:
 	./make-deb.bash
 
 .PHONY: deb-install
-deb-install:
+deb-install: deb
 	./deb-install.bash
 
 .PHONY: pkgbuild
@@ -21,11 +21,11 @@ pacman-install:
 	./pacman-install.bash
 
 .PHONY: homebrew
-homebrew:
+homebrew: tar
 	./make-homebrew.bash
 
 .PHONY: homebrew-install
-homebrew-install:
+homebrew-install: homebrew
 	./homebrew-install.bash
 
 .PHONY: tar
