@@ -67,7 +67,7 @@ Installing an official release:
 Installing from source (in `packaging` directory):
 
 * Ubuntu/Debian: `make deb-install`
-* Arch Linux: `make pacman-install`
+* Arch Linux: `make pkgbuild-install`
 * Homebrew: `make homebrew-install`
 * Manual: `make tar` will generate `pass-ln-x.y.z.tar.gz` but will not
   install it automatically since installing software outside a package

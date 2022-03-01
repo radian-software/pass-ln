@@ -9,7 +9,8 @@ class PassLn < Formula
   depends_on "pass"
 
   def install
-    prefix.install(Dir["*"])
+    (lib/"password-store/extensions").install "lib/password-store/extensions/pass-ln.bash" => "ln.bash"
+    prefix.install "CHANGELOG.md"
   end
 
   test do

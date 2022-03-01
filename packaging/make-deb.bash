@@ -7,6 +7,10 @@ rm -rf tmp
 mkdir -p tmp/usr/lib/password-store/extensions
 cp ../pass-ln.bash tmp/usr/lib/password-store/extensions/ln.bash
 
+mkdir -p tmp/usr/share/doc/pass-ln
+cp ../CHANGELOG.md tmp/usr/share/doc/pass-ln/
+gzip tmp/usr/share/doc/pass-extension-ln/CHANGELOG.md
+
 mkdir -p tmp/DEBIAN
 tee tmp/DEBIAN/control <<EOF >/dev/null
 Package: pass-extension-ln

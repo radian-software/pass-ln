@@ -1,0 +1,27 @@
+# Maintainer: Radon Rosborough <radon.neon@gmail.com>
+
+pkgname='pass-ln'
+pkgver='${VERSION//-/_}'
+pkgrel='${PKGREL}'
+pkgdesc="Pass extension for creating symbolic links"
+arch=('any')
+url="https://github.com/raxod502/pass-ln"
+license=('MIT')
+depends=('pass')
+source=('https://github.com/raxod502/pass-ln/releases/download/v${VERSION}/pass-ln-${VERSION}.tar.gz')
+sha256sums=('$(sha256sum "out/${VERSION}/pass-ln-${VERSION}.tar.gz" | awk '{print $1}')')
+
+package() {
+  cd "\$srcdir/pass-ln-${VERSION}"
+
+  install -D lib/password-store/extensions/ln.bash "\$pkgdir/usr/lib/password-store/extensions/ln.bash"
+  install -D share/doc/pass-ln/CHANGELOG.md "\$pkgdir/usr/share/doc/pass-ln/CHANGELOG.md"
+}
+
+# vim:set ts=2 sw=2 et:
+
+# Local Variables:
+# mode: sh
+# sh-basic-offset: 2
+# sh-shell: bash
+# End:

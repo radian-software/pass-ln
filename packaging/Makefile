@@ -1,6 +1,9 @@
 VERSION := $(shell git describe --tags --dirty | sed 's/^v//')
 export VERSION
 
+PKGREL := 1
+export PKGREL
+
 .PHONY: all
 all: deb pkgbuild homebrew tar
 
@@ -13,12 +16,12 @@ deb-install: deb
 	./deb-install.bash
 
 .PHONY: pkgbuild
-pkgbuild:
+pkgbuild: tar
 	./make-pkgbuild.bash
 
-.PHONY: pacman-install
-pacman-install:
-	./pacman-install.bash
+.PHONY: pkgbuild-install
+pkgbuild-install: pkgbuild
+	./pkgbuild-install.bash
 
 .PHONY: homebrew
 homebrew: tar
