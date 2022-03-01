@@ -5,10 +5,14 @@ PKGREL := 1
 export PKGREL
 
 .PHONY: all
-all: deb pkgbuild homebrew tar
+all: tar deb pkgbuild homebrew
+
+.PHONY: tar
+tar:
+	./make-tar.bash
 
 .PHONY: deb
-deb:
+deb: tar
 	./make-deb.bash
 
 .PHONY: deb-install
@@ -30,7 +34,3 @@ homebrew: tar
 .PHONY: homebrew-install
 homebrew-install: homebrew
 	./homebrew-install.bash
-
-.PHONY: tar
-tar:
-	./make-tar.bash

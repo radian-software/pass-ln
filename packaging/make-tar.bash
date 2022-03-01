@@ -6,6 +6,12 @@ rm -rf tmp
 
 mkdir -p "tmp/pass-ln-${VERSION}/lib/password-store/extensions"
 cp ../pass-ln.bash "tmp/pass-ln-${VERSION}/lib/password-store/extensions/ln.bash"
+sed -E "s/^VERSION=.+/VERSION=${VERSION}/" \
+    "tmp/pass-ln-${VERSION}/lib/password-store/extensions/ln.bash" > \
+    "tmp/pass-ln-${VERSION}/lib/password-store/extensions/ln.bash.tmp"
+mv "tmp/pass-ln-${VERSION}/lib/password-store/extensions/ln.bash.tmp" \
+   "tmp/pass-ln-${VERSION}/lib/password-store/extensions/ln.bash"
+chmod +x "tmp/pass-ln-${VERSION}/lib/password-store/extensions/ln.bash"
 
 mkdir -p "tmp/pass-ln-${VERSION}/share/doc/pass-ln"
 cp ../CHANGELOG.md ../LICENSE.md "tmp/pass-ln-${VERSION}/share/doc/pass-ln/"

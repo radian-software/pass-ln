@@ -62,7 +62,8 @@ Installing an official release:
   pass-ln-pkgbuild-x.y.z && makepkg -si`
 * Homebrew: `unzip ./pass-ln-homebrew-x.y.z.tar.gz && cd
   pass-ln-homebrew-x.y.z.tar.gz && brew install ./Formula/pass-ln.rb`
-* Manual: `sudo tar -xvf ./pass-ln-x.y.z.tar.gz --strip-components=1 -C /usr`
+* Manual: `sudo tar -xvf ./pass-ln-x.y.z.tar.gz --strip-components=1
+  -C /usr`, and install `pass` and `coreutils`
 
 Installing from source (in `packaging` directory):
 
@@ -72,6 +73,15 @@ Installing from source (in `packaging` directory):
 * Manual: `make tar` will generate `pass-ln-x.y.z.tar.gz` but will not
   install it automatically since installing software outside a package
   manager is not generally recommended
+
+Running from source without installing:
+
+* Add `export PASSWORD_STORE_ENABLE_EXTENSIONS=true` to your shell
+  profile.
+* Create `~/.password-store/.extensions` if it does not already exist
+  (substitute the value of `PASSWORD_STORE_EXTENSIONS_DIR` if set).
+* Create a symbolic link, `ln -s "$PWD/pass-ln.bash"
+  ~/.password-store/.extensions/ln.bash`.
 
 ## Reference documentation
 

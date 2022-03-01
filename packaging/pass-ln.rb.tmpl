@@ -7,6 +7,7 @@ class PassLn < Formula
   license "MIT"
 
   depends_on "pass"
+  depends_on "coreutils"
 
   def install
     (lib/"password-store/extensions").install "lib/password-store/extensions/pass-ln.bash" => "ln.bash"
