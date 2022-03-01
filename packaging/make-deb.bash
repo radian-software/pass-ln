@@ -7,9 +7,13 @@ rm -rf tmp
 mkdir -p tmp/usr/lib/password-store/extensions
 cp ../pass-ln.bash tmp/usr/lib/password-store/extensions/ln.bash
 
-mkdir -p tmp/usr/share/doc/pass-ln
-cp ../CHANGELOG.md tmp/usr/share/doc/pass-ln/
-gzip tmp/usr/share/doc/pass-extension-ln/CHANGELOG.md
+mkdir -p tmp/usr/share/doc/pass-extension-ln
+cp ../CHANGELOG.md ../LICENSE.md tmp/usr/share/doc/pass-extension-ln/
+gzip tmp/usr/share/doc/pass-extension-ln/*
+
+mkdir -p tmp/usr/share/man/man1
+cp ../pass-ln.1 tmp/usr/share/man/man1/
+gzip tmp/usr/share/man/man1/pass-ln.1
 
 mkdir -p tmp/DEBIAN
 tee tmp/DEBIAN/control <<EOF >/dev/null

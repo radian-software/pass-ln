@@ -72,3 +72,32 @@ Installing from source (in `packaging` directory):
 * Manual: `make tar` will generate `pass-ln-x.y.z.tar.gz` but will not
   install it automatically since installing software outside a package
   manager is not generally recommended
+
+## Reference documentation
+
+The full command-line syntax for `pass ln`, creating a symbolic link
+named `LINK_NAME` pointing at `TARGET`:
+
+```
+% pass ln TARGET LINK_NAME
+```
+
+`TARGET` and `LINK_NAME` are both relative to the password store root
+in all cases (i.e., they would be suitable as arguments to other
+subcommands such as `pass generate` and `pass edit`). The symbolic
+link will always be relative, and `TARGET` is rewritten using the
+appropriate relative path given the parent directory of `LINK_NAME`.
+
+`TARGET` and `LINK_NAME` can both be either files or directories. If
+`LINK_NAME` is an existing directory, then the symbolic link is
+created inside `LINK_NAME` using the same basename as `TARGET` has. If
+`LINK_NAME` does not exist, it will normally be assumed to be a file.
+Any needed parent directories will be created automatically, like
+`pass` does normally. However, if `LINK_NAME` has a trailing slash, it
+will always be interpreted as a directory, and will be created if
+absent, before the symbolic link is created inside the (possibly new)
+directory.
+
+There is no option to overwrite an existing file or directory with a
+symbolic link. To do this, first `pass rm` the existing file or
+directory, then create the symbolic link with `pass ln`.

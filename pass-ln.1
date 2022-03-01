@@ -1,0 +1,89 @@
+.TH PASS LN 1
+.SH NAME
+pass ln \- Pass extension for creating symbolic links
+.SH SYNOPSIS
+.B pass ln
+\fITARGET\fR
+\fILINK_NAME\fR
+.br
+.B pass ln
+\fITARGET\fR
+\fIDIRECTORY\fR
+.SH DESCRIPTION
+In the first form, create an entry in the password store named
+\fILINK_NAME\fR which acts as an alias to an existing entry named
+\fITARGET\fR.  This is implemented by creating a symbolic link at
+\fILINK_NAME\fR.  Both \fITARGET\fR and \fILINK_NAME\fR must be
+relative to the root of the password store, but \fITARGET\fR is
+automatically converted to a path relative to \fILINK_NAME\fR's parent
+directory when creating the symbolic link, to ensure it can be
+dereferenced correctly.  Note that \fITARGET\fR may be either a file
+(with no \fB.gpg\fR suffix) or directory.
+.PP
+The second form is equivalent to the first form except that
+\fILINK_NAME\fR is implicitly postpended with the last component of
+\fITARGET\fR, as in the \fBln -s\fR command.  The second form is
+assumed when \fILINK_NAME\fR refers to an existing directory, or when
+\fILINK_NAME\fR has a trailing slash, and the first form is assumed
+otherwise.
+.PP
+Unlike with \fBln -s\fR, this command automatically creates all parent
+directories of \fILINK_NAME\fR, including \fILINK_NAME\fR itself if it
+does not exist but the provided name has a trailing slash.
+.SH OPTIONS
+This command has no options.
+.SH EXIT STATUS
+This command follows the standard convention of a zero exit status
+indicating success.  No guarantees are made about the exit status on
+an error except that it will be nonzero.
+.SH EXAMPLES
+Make it possible to log in to various Stack Exchange sites using a
+single set of credentials:
+.in +4n
+.EX
+
+% pass insert stackexchange.com/you@example.com
+% pass ln stackexchange.com stackoverflow.com
+% pass ln stackexchange.com askubuntu.com
+% pass ln stackexchange.com mathoverflow.com
+
+.EE
+.in
+Create a human-readable alias for a piece of identifying information:
+.in +4n
+.EX
+
+% pass insert insurance-card/rxgrp
+% pass ln
+    wallet/insurance-card/rxgrp
+    wallet/insurance-card/prescription-group-number
+
+.EE
+.in
+Create an alias for a directory and associate it with a specific
+domain:
+.in +4n
+.in
+.EX
+
+% pass ln wallet/insurance-card cigna.com/id-card
+
+.EE
+.SH NOTES
+There is no option to overwrite an existing file or directory with a
+symbolic link. To do this, first \fBpass rm\fR the existing file or
+directory, then create the symbolic link with \fBpass ln\fR.
+.SH AUTHOR
+Written by Radon Rosborough <radon.neon@gmail.com>.
+.SH COPYRIGHT
+Copyright \(co 2022 Radon Rosborough and licensed under the MIT
+License.
+.SH "SEE ALSO"
+The source code and bug tracker for \fBpass ln\fR may be found at
+<https://github.com/raxod502/pass-ln>.
+
+.ig
+Local Variables:
+sentence-end-double-space: t
+End:
+..

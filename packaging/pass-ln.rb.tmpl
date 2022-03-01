@@ -10,7 +10,8 @@ class PassLn < Formula
 
   def install
     (lib/"password-store/extensions").install "lib/password-store/extensions/pass-ln.bash" => "ln.bash"
-    prefix.install "CHANGELOG.md"
+    prefix.install "share/doc/pass-ln/CHANGELOG.md"
+    man1.install "share/man/man1/pass-ln.1"
   end
 
   test do
