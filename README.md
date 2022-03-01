@@ -49,7 +49,7 @@ hardcoding the path to your password store directory.
 You can download the latest release from GitHub Releases, or install
 from source.
 
-Installing from upstream repositories:
+Installing from distro repositories:
 
 * Ubuntu/Debian: (not available)
 * Arch Linux: available on AUR as `pass-ln`
