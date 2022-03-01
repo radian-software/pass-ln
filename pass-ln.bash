@@ -56,6 +56,7 @@ cmd_ln() {
     fi
     link_name_dir="$(dirname -- "${link_name}")"
     target_relative_path="$(realpath -m --relative-to="${link_name_dir}" -- "${target_realname}")"
+    set_git "${PREFIX}/${link_realname}"
     mkdir -p "${PREFIX}/${link_name_dir}"
     ln -s "${target_relative_path}" "${PREFIX}/${link_realname}"
     git_add_file "${PREFIX}/${link_realname}" "Alias ${target} to ${link_name}."
@@ -67,7 +68,6 @@ fi
 
 case "$1" in
     help|--help|-h) usage              ;;
-    ln) cmd_ln "$@"                    ;;
     version|--version|-v) cmd_version  ;;
-    *) usage >&2; exit 1               ;;
+    *) cmd_ln "$@"                     ;;
 esac
