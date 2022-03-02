@@ -1,4 +1,4 @@
-.TH PASS LN 1
+.TH PASS-LN 1
 .SH NAME
 pass ln \- Pass extension for creating symbolic links
 .SH SYNOPSIS
@@ -39,36 +39,42 @@ an error except that it will be nonzero.
 .SH EXAMPLES
 Make it possible to log in to various Stack Exchange sites using a
 single set of credentials:
-.in +4n
+.PP
+.\"Weird indentation style to workaround man bug on BSD/macOS
+.in +3n
 .EX
 
-% pass insert stackexchange.com/you@example.com
-% pass ln stackexchange.com stackoverflow.com
-% pass ln stackexchange.com askubuntu.com
-% pass ln stackexchange.com mathoverflow.com
+ % pass insert stackexchange.com/you@example.com
+ % pass ln stackexchange.com stackoverflow.com
+ % pass ln stackexchange.com askubuntu.com
+ % pass ln stackexchange.com mathoverflow.com
 
 .EE
 .in
+.PP
 Create a human-readable alias for a piece of identifying information:
-.in +4n
+.PP
+.in +3n
 .EX
 
-% pass insert insurance-card/rxgrp
-% pass ln
-    wallet/insurance-card/rxgrp
-    wallet/insurance-card/prescription-group-number
+ % pass insert insurance-card/rxgrp
+ % pass ln
+     wallet/insurance-card/rxgrp
+     wallet/insurance-card/prescription-group-number
 
 .EE
 .in
+.PP
 Create an alias for a directory and associate it with a specific
 domain:
-.in +4n
-.in
+.PP
+.in +3n
 .EX
 
-% pass ln wallet/insurance-card cigna.com/id-card
+ % pass ln wallet/insurance-card cigna.com/id-card
 
 .EE
+.in
 .SH NOTES
 There is no option to overwrite an existing file or directory with a
 symbolic link. To do this, first \fBpass rm\fR the existing file or
