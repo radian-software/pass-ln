@@ -20,5 +20,9 @@ if [[ "$#" -gt 1 ]]; then
     args=("${@:2}")
 fi
 
-docker run -it --rm -v "${PWD}:/src" -w /src                       \
-       --entrypoint=/src/docker/entrypoint.bash "$1" "${args[@]}"
+opts=(-i --rm -v "${PWD}:/src" -w /src --entrypoint=/src/docker/entrypoint.bash)
+if [[ -t 0 ]]; then
+    opts+=("-t")
+fi
+
+docker run "${opts[@]}" "$1" "${args[@]}"
