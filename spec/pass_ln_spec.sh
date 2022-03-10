@@ -1,4 +1,5 @@
 before_all() {
+  REPO_DIR="${PWD}"
   pushd "${SHELLSPEC_WORKDIR}"
   export HOME="${PWD}"
 
@@ -23,6 +24,10 @@ before_all() {
 before_each() {
   pass init pass-ln-testing
   pass git init
+
+  export PASSWORD_STORE_ENABLE_EXTENSIONS=true
+  mkdir -p "${HOME}/.password-store/.extensions"
+  ln -s "${REPO_DIR}/pass-ln.bash" "${HOME}/.password-store/.extensions/ln.bash"
 }
 
 after_each() {
