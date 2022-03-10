@@ -1,8 +1,5 @@
 name: Tests
-on:
-  push:
-    branches:
-      - rr-github-actions-test
+on: push
 jobs:
   shellspec:
     runs-on: ubuntu-20.04
