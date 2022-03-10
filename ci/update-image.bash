@@ -18,4 +18,4 @@ echo "${GITHUB_TOKEN}" | docker login ghcr.io -u raxod502 --password-stdin
 docker tag pass-ln "${image}"
 docker push "${image}"
 
-echo "${image}" > ./ci/current_image
+echo "${image}" > ./ci/current-image

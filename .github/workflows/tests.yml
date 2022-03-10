@@ -10,4 +10,4 @@ jobs:
       packages: read
     steps:
       - uses: actions/checkout@v2
-      - run: ./ci/github_actions.bash
+      - run: ./ci/github-actions.bash

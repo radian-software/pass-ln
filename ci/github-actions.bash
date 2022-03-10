@@ -2,6 +2,6 @@
 
 set -euo pipefail
 
-image="$(< ./ci/current_image)"
+image="$(< ./ci/current-image)"
 
 ./docker/run-in-docker.bash "${image}" shellspec
