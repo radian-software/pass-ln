@@ -11,3 +11,5 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: ./ci/github-actions.bash
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
