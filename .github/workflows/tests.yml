@@ -1,0 +1,13 @@
+name: Tests
+on:
+  push:
+    branches:
+      - rr-github-actions-test
+jobs:
+  shellspec:
+    runs-on: ubuntu-20.04
+    permissions:
+      packages: read
+    steps:
+      - uses: actions/checkout@v2
+      - run: ./ci/github_actions.bash
