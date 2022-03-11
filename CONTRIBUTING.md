@@ -3,6 +3,22 @@
 This document has helpful information for people wishing to contribute
 changes to `pass-ln`.
 
+## Running the tests
+
+`pass-ln` has some simple integration tests written using
+[ShellSpec](https://shellspec.info/). If you have ShellSpec installed,
+you can simply run `shellspec` in the repository to run the tests. You
+must have Pass and dependencies installed already.
+
+If you don't want to install ShellSpec, you can use
+[Docker](https://www.docker.com/) instead. Simply run `docker build .
+-t pass-ln` to build an image with all the dependencies installed, and
+then run `./docker/run-in-docker.bash pass-ln shellspec`.
+
+You can also create a pull request, and the tests will be run
+automatically by GitHub Actions. You may want to mark such a pull
+request as a "draft" until you are ready for it to be reviewed.
+
 ## Release process
 
 1. Update the changelog to indicate the version number and date of the
