@@ -8,7 +8,7 @@ pass ln \- Pass extension for creating symbolic links
 .br
 .B pass ln
 \fITARGET\fR
-\fIDIRECTORY\fR
+\fIDIRECTORY/\fR
 .SH DESCRIPTION
 In the first form, create an entry in the password store named
 \fILINK_NAME\fR which acts as an alias to an existing entry named
@@ -22,10 +22,8 @@ dereferenced correctly.  Note that \fITARGET\fR may be either a file
 .PP
 The second form is equivalent to the first form except that
 \fILINK_NAME\fR is implicitly postpended with the last component of
-\fITARGET\fR, as in the \fBln -s\fR command.  The second form is
-assumed when \fILINK_NAME\fR refers to an existing directory, or when
-\fILINK_NAME\fR has a trailing slash, and the first form is assumed
-otherwise.
+\fITARGET\fR, as in the \fBln -s\fR command.  This is provided as a
+convenience and does not create any additional functionality.
 .PP
 Unlike with \fBln -s\fR, this command automatically creates all parent
 directories of \fILINK_NAME\fR, including \fILINK_NAME\fR itself if it

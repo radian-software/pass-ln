@@ -97,17 +97,17 @@ in all cases (i.e., they would be suitable as arguments to other
 subcommands such as `pass generate` and `pass edit`). The symbolic
 link will always be relative, and `TARGET` is rewritten using the
 appropriate relative path given the parent directory of `LINK_NAME`.
+Note that `TARGET` can be either a file or directory.
 
-`TARGET` and `LINK_NAME` can both be either files or directories. If
-`LINK_NAME` is an existing directory, then the symbolic link is
-created inside `LINK_NAME` using the same basename as `TARGET` has. If
-`LINK_NAME` does not exist, it will normally be assumed to be a file.
+`LINK_NAME` must not already exist. There is no option to overwrite an
+existing file or directory with a symbolic link. To do this, first
+`pass rm` the existing file or directory, then create the symbolic
+link with `pass ln`.
+
 Any needed parent directories will be created automatically, like
-`pass` does normally. However, if `LINK_NAME` has a trailing slash, it
-will always be interpreted as a directory, and will be created if
-absent, before the symbolic link is created inside the (possibly new)
-directory.
+`pass` does normally.
 
-There is no option to overwrite an existing file or directory with a
-symbolic link. To do this, first `pass rm` the existing file or
-directory, then create the symbolic link with `pass ln`.
+If `LINK_NAME` has a trailing slash, it will be automatically suffixed
+with the basename of `TARGET`, like in `mv` and `cp`. This behavior is
+restricted to when `LINK_NAME` explicitly has a trailing slash, to
+minimize confusion.

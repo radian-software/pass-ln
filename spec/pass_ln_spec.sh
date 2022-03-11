@@ -68,16 +68,17 @@ End
 Describe "overwriting an existing"
   Parameters
     "file at the top level" target symlink
-    "directory at the top level" target example.com example.com/symlink
+    "directory at the top level" example.com/target example.org/symlink example.com example.org
   End
   run() {
     pass insert -e "$2" <<< foobar
     pass insert -e "$3" <<< bigbad
-    pass ln "$2" "${4:-$3}" 2>&1
+    pass ln "${4:-$2}" "${5:-$3}" 2>&1
   }
   It "$1"
     When call run "$@"
     The status should be failure
+    The output should include "refusing to overwrite"
     The output should not include "Alias"
   End
 End

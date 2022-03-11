@@ -35,34 +35,30 @@ cmd_ln() {
     fi
     check_sneaky_paths "$@"
     local target="$1"
-    local link_name="$2"
-    local target_is_dir=
-    local target_realname=
-    if [[ -d "${PREFIX}/${target}" ]]; then
-        target_is_dir=true
-        target_realname="${target}"
-    elif [[ -f "${PREFIX}/${target}.gpg" ]]; then
-        target_realname="${target}.gpg"
+    local link_shorthand_name="$2"
+    local link_name="${link_shorthand_name}"
+    if [[ "${link_shorthand_name}" == */ ]]; then
+        link_name="${link_name%%/}/$(basename -- "${target}")"
+    fi
+    local target_filename="${target}"
+    local link_filename="${link_name}"
+    if [[ -f "${PREFIX}/${target}.gpg" ]]; then
+        target_filename+=".gpg"
+        link_filename+=".gpg"
+    elif [[ -d "${PREFIX}/${target}" ]]; then
+        : # Nothing to do
     else
         die "Error: ${target} is not in the password store."
     fi
-    local link_name_is_dir=
-    if [[ "${link_name}" == */ || -e "${PREFIX}/${link_name%/}" ]]; then
-        link_name_is_dir=true
+    if [[ -e "${PREFIX}/${link_filename}" || -L "${PREFIX}/${link_filename}" ]]; then
+        die "Error: refusing to overwrite ${link_name}."
     fi
-    if [[ -n "${link_name_is_dir}" ]]; then
-        link_name="${link_name%/}/$(basename -- "${target}")" || exit
-    fi
-    local link_realname="${link_name}"
-    if [[ -z "${target_is_dir}" ]]; then
-        link_realname+=".gpg"
-    fi
-    link_name_dir="$(dirname -- "${link_name}")" || exit
-    target_relative_path="$(realpath -m --relative-to="${link_name_dir}" -- "${target_realname}")" || exit
-    set_git "${PREFIX}/${link_realname}"
-    mkdir -p "${PREFIX}/${link_name_dir}" || exit
-    ln -s "${target_relative_path}" "${PREFIX}/${link_realname}" || exit
-    git_add_file "${PREFIX}/${link_realname}" "Alias ${target} to ${link_name}."
+    link_dir="$(dirname -- "${link_filename}")" || exit
+    target_relative_path="$(realpath -m --relative-to="${link_dir}" -- "${target_filename}")" || exit
+    set_git "${PREFIX}/${link_filename}"
+    mkdir -p "${PREFIX}/${link_dir}" || exit
+    ln -s "${target_relative_path}" "${PREFIX}/${link_filename}" || exit
+    git_add_file "${PREFIX}/${link_filename}" "Alias ${target} to ${link_name}."
 }
 
 if [[ "$#" -eq 0 ]]; then
