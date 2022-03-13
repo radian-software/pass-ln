@@ -5,7 +5,7 @@ PKGREL := 1
 export PKGREL
 
 .PHONY: all
-all: tar deb pkgbuild homebrew
+all: tar deb rpm pkgbuild homebrew
 
 .PHONY: tar
 tar:
@@ -18,6 +18,14 @@ deb: tar
 .PHONY: deb-install
 deb-install: deb
 	./deb-install.bash
+
+.PHONY: rpm
+rpm: tar
+	./make-rpm.bash
+
+.PHONY: rpm-install
+rpm-install: rpm
+	./rpm-install.bash
 
 .PHONY: pkgbuild
 pkgbuild: tar
