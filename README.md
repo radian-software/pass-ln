@@ -52,12 +52,14 @@ from source.
 Installing from distro repositories:
 
 * Ubuntu/Debian: (not available)
+* Red Hat/Fedora: (not available)
 * Arch Linux: available on AUR as `pass-ln`
 * Homebrew: available in custom tap as `raxod502/pass-ln/pass-ln`
 
 Installing an official release:
 
 * Ubuntu/Debian: `sudo apt install ./pass-extension-ln-x.y.z.deb`
+* Red Hat/Fedora: `sudo yum install ./pass-ln-x.y.z.rpm`
 * Arch Linux: `tar -xvf ./pass-ln-pkgbuild-x.y.z.tar.gz && cd
   pass-ln-pkgbuild-x.y.z && makepkg -si`
 * Homebrew: `unzip ./pass-ln-homebrew-x.y.z.tar.gz && cd
@@ -68,6 +70,7 @@ Installing an official release:
 Installing from source (in `packaging` directory):
 
 * Ubuntu/Debian: `make deb-install`
+* Red Hat/Fedora: `make rpm-install`
 * Arch Linux: `make pkgbuild-install`
 * Homebrew: `make homebrew-install`
 * Manual: `make tar` will generate `pass-ln-x.y.z.tar.gz` but will not
