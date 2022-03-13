@@ -53,8 +53,10 @@ Installing from distro repositories:
 
 * Ubuntu/Debian: (not available)
 * Red Hat/Fedora: (not available)
-* Arch Linux: available on AUR as `pass-ln`
-* Homebrew: available in custom tap as `raxod502/pass-ln/pass-ln`
+* Arch Linux: [available on AUR as
+  `pass-ln`](https://aur.archlinux.org/packages/pass-ln)
+* Homebrew: [available in custom tap as
+  `raxod502/pass-ln/pass-ln`](https://github.com/raxod502/homebrew-pass-ln)
 
 Installing an official release:
 
@@ -87,6 +89,10 @@ Running from source without installing:
   ~/.password-store/.extensions/ln.bash`.
 
 ## Reference documentation
+
+If you have installed `pass-ln`, you can access full documentation in
+its man page by running `man pass-ln`. The same information is
+reproduced here for convenience.
 
 The full command-line syntax for `pass ln`, creating a symbolic link
 named `LINK_NAME` pointing at `TARGET`:
