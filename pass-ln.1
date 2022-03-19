@@ -77,6 +77,27 @@ domain:
 There is no option to overwrite an existing file or directory with a
 symbolic link. To do this, first \fBpass rm\fR the existing file or
 directory, then create the symbolic link with \fBpass ln\fR.
+.SH BUGS
+You cannot use \fBpass insert\fR to insert an entry into a directory
+through a symlink (e.g. if \fBfoo\fR is a symlink pointing to
+directory \fBbar\fR, then \fBpass insert foo/quux\fR will fail even
+though \fBpass insert bar/quux\fR is fine). The error is \fBfatal:
+pathspec '/home/yourname/.password-store/foo/quux.gpg' is beyond a
+symbolic link\fR. This is a bug in Pass and cannot be fixed in
+pass-ln. Unfortunately, Pass does not have a bug tracker, so there is
+no upstream reference for the bug.
+.PP
+The output of \fBpass ls\fR may be unexpected in the face of symbolic
+links. In particular, you may see the text \fB[recursive, not
+followed]\fR after a symbolic link. This is normal, and indicates that
+the contents of the directory that the symlink is pointing to have
+already been displayed in the current output, and \fBtree\fR is
+refraining from showing the same information a second time.
+.PP
+Autocompletion for \fBpass ln\fR does not work in Fish. Unfortunately,
+this is due to a bug in Pass which causes it to ignore Pass extensions
+when generating autocompletions, and there is no way to fix this in
+pass-ln.
 .SH AUTHOR
 Written by Radon Rosborough <radon.neon@gmail.com>.
 .SH COPYRIGHT

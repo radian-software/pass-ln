@@ -120,3 +120,24 @@ If `LINK_NAME` has a trailing slash, it will be automatically suffixed
 with the basename of `TARGET`, like in `mv` and `cp`. This behavior is
 restricted to when `LINK_NAME` explicitly has a trailing slash, to
 minimize confusion.
+
+## Known issues
+
+* You cannot use `pass insert` to insert an entry into a directory
+  through a symlink (e.g. if `foo` is a symlink pointing to directory
+  `bar`, then `pass insert foo/quux` will fail even though `pass
+  insert bar/quux` is fine). The error is `fatal: pathspec
+  '/home/yourname/.password-store/foo/quux.gpg' is beyond a symbolic
+  link`. This is a bug in Pass and cannot be fixed in pass-ln.
+  Unfortunately, Pass does not have a bug tracker, so there is no
+  upstream reference for the bug.
+* The output of `pass ls` may be unexpected in the face of symbolic
+  links. In particular, you may see the text `[recursive, not
+  followed]` after a symbolic link. This is normal, and indicates that
+  the contents of the directory that the symlink is pointing to have
+  already been displayed in the current output, and `tree` is
+  refraining from showing the same information a second time.
+* Autocompletion for `pass ln` does not work in Fish. Unfortunately,
+  this is due to a bug in Pass which causes it to ignore Pass
+  extensions when generating autocompletions, and there is no way to
+  fix this in pass-ln.
