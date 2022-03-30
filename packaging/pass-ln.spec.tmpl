@@ -20,6 +20,7 @@ Pass extension for creating symbolic links
 
 %install
 install -D lib/password-store/extensions/ln.bash %{buildroot}/%{_prefix}/lib/password-store/extensions/ln.bash
+install -D etc/bash_completion.d/pass-ln %{buildroot}/%{_prefix}/etc/bash_completion.d/pass-ln
 install -D share/doc/pass-ln/CHANGELOG.md %{buildroot}/%{_docdir}/pass-ln/CHANGELOG.md
 install -D share/man/man1/pass-ln.1 %{buildroot}/%{_mandir}/man1/pass-ln.1
 

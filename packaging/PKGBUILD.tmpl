@@ -15,6 +15,7 @@ package() {
   cd "\$srcdir/pass-ln-${VERSION}"
 
   install -D lib/password-store/extensions/ln.bash "\$pkgdir/usr/lib/password-store/extensions/ln.bash"
+  install -D etc/bash_completion.d/pass-ln "\$pkgdir/etc/bash_completion.d/pass-ln"
   install -D share/doc/pass-ln/CHANGELOG.md "\$pkgdir/usr/share/doc/pass-ln/CHANGELOG.md"
   install -D share/man/man1/pass-ln.1 "\$pkgdir/usr/share/man/man1/pass-ln.1"
 }

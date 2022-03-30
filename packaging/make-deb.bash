@@ -11,6 +11,10 @@ mkdir -p tmp/pkg/usr/lib/password-store/extensions
 cp tmp/tar/lib/password-store/extensions/ln.bash \
    tmp/pkg/usr/lib/password-store/extensions/
 
+mkdir -p tmp/pkg/etc/bash_completion.d
+cp tmp/tar/etc/bash_completion.d/pass-ln \
+   tmp/pkg/etc/bash_completion.d/
+
 mkdir -p tmp/pkg/usr/share/doc/pass-extension-ln
 cp tmp/tar/share/doc/pass-ln/* tmp/pkg/usr/share/doc/pass-extension-ln/
 gzip tmp/pkg/usr/share/doc/pass-extension-ln/*
