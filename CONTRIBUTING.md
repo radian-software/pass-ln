@@ -14,7 +14,7 @@ set up an isolated environment for any of the packaging formats
 supported by pass-ln, so you can install into that environment and
 test functionality. To use it (from `docker` directory):
 
-* Ubuntu/Debian: FIXME
+* Ubuntu/Debian: `make deb-shell`
 * Red Hat/Fedora: FIXME
 * Arch Linux: FIXME
 * Homebrew: `make homebrew-shell`

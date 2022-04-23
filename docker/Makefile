@@ -1,3 +1,8 @@
+.PHONY: deb-shell
+deb-shell:
+	./build-dockerfile.bash deb
+	./run-in-docker.bash pass-ln-deb bash -l
+
 .PHONY: homebrew-shell
 homebrew-shell:
 	./build-dockerfile.bash homebrew
