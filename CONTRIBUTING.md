@@ -3,6 +3,23 @@
 This document has helpful information for people wishing to contribute
 changes to `pass-ln`.
 
+## Testing the packaging code
+
+If you are tested changes to a packaging format that your system
+natively supports, you can just install it directly on your machine
+following the instructions (and Makefile targets) in the README.
+
+Otherwise, we provide Docker configuration that can be used to easily
+set up an isolated environment for any of the packaging formats
+supported by pass-ln, so you can install into that environment and
+test functionality. To use it (from `docker` directory):
+
+* Ubuntu/Debian: FIXME
+* Red Hat/Fedora: FIXME
+* Arch Linux: FIXME
+* Homebrew: `make homebrew-shell`
+* Manual: `./run-in-docker.bash YOUR_FAVORITE_DOCKER_IMAGE bash`
+
 ## Running the tests
 
 `pass-ln` has some simple integration tests written using

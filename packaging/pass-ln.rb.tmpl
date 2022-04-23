@@ -23,7 +23,7 @@ class PassLn < Formula
       Subkey-Type: RSA
       Subkey-Length: 2048
       Name-Real: Testing
-      Name-Email: testing@foo.bar
+      Name-Email: testing@example.com
       Expire-Date: 1d
       %no-protection
       %commit
@@ -32,7 +32,7 @@ class PassLn < Formula
       system Formula["gnupg"].opt_bin/"gpg", "--batch", "--gen-key", "batch.gpg"
       system bin/"pass", "init", "Testing"
       system bin/"pass", "generate", "Email/testing@foo.bar", "15"
-      system bin/"pass", "generate", "Email", "AltEmail"
+      system bin/"pass", "ln", "Email", "AltEmail"
       assert_predicate testpath/".password-store/AltEmail/testing@foo.bar.gpg", :exist?
     ensure
       system Formula["gnupg"].opt_bin/"gpgconf", "--kill", "gpg-agent"
