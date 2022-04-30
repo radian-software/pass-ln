@@ -3,8 +3,9 @@
 set -euo pipefail
 
 runuser=()
-if ! groupadd sudo 2>/dev/null; then
-    runuser+=(runuser -u docker)
+if command -v sudo &>/dev/null; then
+    groupadd sudo -g 27 2>/dev/null ||:
+    runuser+=(runuser -u docker --)
 fi
 
 groupadd -g "$(stat -c %g "$PWD")" -o -p '!' -r docker
@@ -15,6 +16,6 @@ tee > /etc/sudoers.d/docker <<"EOF"
 %sudo	ALL=(ALL:ALL) NOPASSWD: ALL
 EOF
 
-runuser -u docker -- touch /home/docker/.sudo_as_admin_successful
+"${runuser[@]}" touch /home/docker/.sudo_as_admin_successful
 
-exec "${runuser[@]}" -- "$@"
+exec "${runuser[@]}" "$@"
