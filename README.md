@@ -56,7 +56,7 @@ Installing from distro repositories:
 * Arch Linux: [available on AUR as
   `pass-ln`](https://aur.archlinux.org/packages/pass-ln)
 * Homebrew: [available in custom tap as
-  `raxod502/pass-ln/pass-ln`](https://github.com/raxod502/homebrew-pass-ln)
+  `radian-software/pass-ln/pass-ln`](https://github.com/radian-software/homebrew-pass-ln)
 
 Installing an official release:
 
