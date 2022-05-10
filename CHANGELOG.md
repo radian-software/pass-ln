@@ -6,6 +6,8 @@ Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## Unreleased
 
+* Features
+    * Bash completion is now supported in all packaging formats
 * Documentation
     * Some known issues documented in the man page now
 

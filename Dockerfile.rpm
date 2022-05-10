@@ -1,0 +1,4 @@
+FROM fedora:latest
+
+COPY docker/install-rpm-deps.bash /tmp/
+RUN /tmp/install-rpm-deps.bash

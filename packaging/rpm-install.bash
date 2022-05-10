@@ -2,4 +2,4 @@
 
 set -euxo pipefail
 
-sudo yum install "./out/${VERSION}/pass-ln-${VERSION}.rpm"
+sudo dnf reinstall "./out/${VERSION}/pass-ln-${VERSION}.rpm"

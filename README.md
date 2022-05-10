@@ -61,7 +61,7 @@ Installing from distro repositories:
 Installing an official release:
 
 * Ubuntu/Debian: `sudo apt install ./pass-extension-ln-x.y.z.deb`
-* Red Hat/Fedora: `sudo yum install ./pass-ln-x.y.z.rpm`
+* Red Hat/Fedora: `sudo dnf install ./pass-ln-x.y.z.rpm`
 * Arch Linux: `tar -xvf ./pass-ln-pkgbuild-x.y.z.tar.gz && cd
   pass-ln-pkgbuild-x.y.z && makepkg -si`
 * Homebrew: `unzip ./pass-ln-homebrew-x.y.z.tar.gz && cd

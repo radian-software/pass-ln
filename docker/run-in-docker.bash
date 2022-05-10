@@ -2,6 +2,8 @@
 
 set -euo pipefail
 
+cd "$(dirname "$0")/.."
+
 if [[ "$#" -eq 0 ]]; then
     echo >&2 "usage: $0 IMAGE [CMD...]"
     exit 1

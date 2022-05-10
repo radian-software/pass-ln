@@ -13,6 +13,9 @@ mv "tmp/pass-ln-${VERSION}/lib/password-store/extensions/ln.bash.tmp" \
    "tmp/pass-ln-${VERSION}/lib/password-store/extensions/ln.bash"
 chmod +x "tmp/pass-ln-${VERSION}/lib/password-store/extensions/ln.bash"
 
+mkdir -p "tmp/pass-ln-${VERSION}/etc/bash_completion.d"
+cp ../pass-ln.bash.completion "tmp/pass-ln-${VERSION}/etc/bash_completion.d/pass-ln"
+
 mkdir -p "tmp/pass-ln-${VERSION}/share/doc/pass-ln"
 cp ../CHANGELOG.md ../LICENSE.md "tmp/pass-ln-${VERSION}/share/doc/pass-ln/"
 

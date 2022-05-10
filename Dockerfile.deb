@@ -1,0 +1,5 @@
+# EOL: April 2025
+FROM ubuntu:20.04
+
+COPY docker/install-deb-deps.bash /tmp/
+RUN /tmp/install-deb-deps.bash
