@@ -3,3 +3,7 @@ PASSWORD_STORE_EXTENSION_COMMANDS+=(ln)
 __password_store_extension_complete_ln() {
       _pass_complete_entries
 }
+
+# Local variables:
+# mode: shell-script
+# End:

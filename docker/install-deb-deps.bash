@@ -4,8 +4,8 @@ set -euxo pipefail
 
 export DEBIAN_FRONTEND=noninteractive
 
-apt-get update
-apt-get install -y build-essential git sudo
+(yes || true) | unminimize
+apt-get install -y bash-completion build-essential git man-db sudo
 
 rm -rf /var/lib/apt/lists/*
 rm "$0"

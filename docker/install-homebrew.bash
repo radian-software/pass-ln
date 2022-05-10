@@ -15,8 +15,15 @@ set +x
 script="$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 runuser -u linuxbrew -- bash -c "${script}"
 
+runuser -u linuxbrew -- brew install bash-completion
+
 tee /etc/profile.d/linuxbrew.sh >/dev/null <<"EOF"
 echo >&2 "Fixing Homebrew permissions..."
 sudo chown -R "$(whoami)" /home/linuxbrew
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+if [[ -r "/home/linuxbrew/.linuxbrew/etc/profile.d/bash_completion.sh" ]]; then
+    echo >&2 "Enabling bash-completion..."
+    . "/home/linuxbrew/.linuxbrew/etc/profile.d/bash_completion.sh"
+fi
 EOF
