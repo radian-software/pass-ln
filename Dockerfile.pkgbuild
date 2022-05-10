@@ -1,0 +1,4 @@
+FROM archlinux:base-devel
+
+COPY docker/install-pkgbuild-deps.bash /tmp/
+RUN /tmp/install-pkgbuild-deps.bash

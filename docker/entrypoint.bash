@@ -5,7 +5,7 @@ set -euo pipefail
 runuser=()
 if command -v sudo &>/dev/null; then
     groupadd sudo -g 27 2>/dev/null ||:
-    runuser+=(runuser -u docker --)
+    runuser+=(sudo -u docker -- bash -c 'cd /src && exec "$@"' --)
 fi
 
 groupadd -g "$(stat -c %g "$PWD")" -o -p '!' -r docker

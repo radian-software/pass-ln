@@ -15,8 +15,8 @@ supported by pass-ln, so you can install into that environment and
 test functionality. To use it (from `docker` directory):
 
 * Ubuntu/Debian: `make deb-shell`
-* Red Hat/Fedora: FIXME
-* Arch Linux: FIXME
+* Red Hat/Fedora: `make rpm-shell`
+* Arch Linux: `make pkgbuild-shell`
 * Homebrew: `make homebrew-shell`
 * Manual: `./run-in-docker.bash YOUR_FAVORITE_DOCKER_IMAGE bash`
 
