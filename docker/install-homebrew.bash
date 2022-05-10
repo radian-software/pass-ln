@@ -15,7 +15,12 @@ set +x
 script="$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 runuser -u linuxbrew -- bash -c "${script}"
 
-runuser -u linuxbrew -- brew install bash-completion
+runuser -u linuxbrew -- /home/linuxbrew/.linuxbrew/bin/brew install bash-completion
+
+# Workaround bash-completion and util-linux somehow conflicting?? T_T
+runuser -u linuxbrew -- /home/linuxbrew/.linuxbrew/bin/brew unlink bash-completion
+runuser -u linuxbrew -- /home/linuxbrew/.linuxbrew/bin/brew install util-linux
+runuser -u linuxbrew -- /home/linuxbrew/.linuxbrew/bin/brew link bash-completion --overwrite
 
 tee /etc/profile.d/linuxbrew.sh >/dev/null <<"EOF"
 echo >&2 "Fixing Homebrew permissions..."

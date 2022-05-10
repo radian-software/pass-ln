@@ -11,7 +11,7 @@ class PassLn < Formula
 
   def install
     (lib/"password-store/extensions").install "lib/password-store/extensions/ln.bash"
-    (etc/"bash_completion.d").install "etc/bash_completion.d/pass-ln"
+    bash_completion.install "etc/bash_completion.d/pass-ln"
     prefix.install "share/doc/pass-ln/CHANGELOG.md"
     man1.install "share/man/man1/pass-ln.1"
   end
@@ -39,3 +39,7 @@ class PassLn < Formula
     end
   end
 end
+
+# Local Variables:
+# mode: ruby
+# End:
