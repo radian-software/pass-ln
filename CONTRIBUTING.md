@@ -5,7 +5,7 @@ changes to `pass-ln`.
 
 ## Testing the packaging code
 
-If you are tested changes to a packaging format that your system
+If you are testing changes to a packaging format that your system
 natively supports, you can just install it directly on your machine
 following the instructions (and Makefile targets) in the README.
 
