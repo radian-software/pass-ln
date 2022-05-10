@@ -11,9 +11,9 @@ if [[ "$#" -eq 0 || "$1" != "-n" ]]; then
     ./docker/run-in-docker.bash pass-ln shellspec
 fi
 
-image="ghcr.io/raxod502/pass-ln-ci:${ts}"
+image="ghcr.io/radian-software/pass-ln-ci:${ts}"
 
-echo "${GITHUB_TOKEN}" | docker login ghcr.io -u raxod502 --password-stdin
+echo "${GITHUB_TOKEN}" | docker login ghcr.io -u radian-software --password-stdin
 
 docker tag pass-ln "${image}"
 docker push "${image}"

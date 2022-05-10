@@ -30,7 +30,7 @@ Version: ${VERSION}
 Section: admin
 Priority: optional
 Architecture: all
-Maintainer: Radon Rosborough <radon.neon@gmail.com>
+Maintainer: Radian LLC <contact+pass-ln@radian.codes>
 Description: Pass extension for creating symbolic links
 Depends: pass, coreutils
 EOF
