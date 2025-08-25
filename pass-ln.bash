@@ -54,7 +54,11 @@ cmd_ln() {
         die "Error: refusing to overwrite ${link_name}."
     fi
     link_dir="$(dirname -- "${link_filename}")" || exit
-    target_relative_path="$(realpath -m --relative-to="${link_dir}" -- "${target_filename}")" || exit
+    realpath_cmd="realpath"
+    if [[ "$(uname)" == "Darwin" ]]; then
+        realpath_cmd="grealpath" # GNU coreutils realpath when installed via Homebrew
+    fi
+    target_relative_path="$("$realpath_cmd" -m --relative-to="${link_dir}" -- "${target_filename}")" || exit
     set_git "${PREFIX}/${link_filename}"
     mkdir -p "${PREFIX}/${link_dir}" || exit
     ln -s "${target_relative_path}" "${PREFIX}/${link_filename}" || exit
