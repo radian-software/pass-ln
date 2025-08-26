@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a
 Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## Unreleased
+
+* Improvements
+    * Command `grealpath` will be used instead of `realpath`, if
+      installed. On macOS, this is helpful because many users have a
+      broken `realpath` command and install a working version of the
+      command under `grealpath` instead (via Homebrew).
+
 ## 2.1.0 (2022-05-10)
 
 * Features
