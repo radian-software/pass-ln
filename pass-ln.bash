@@ -56,8 +56,9 @@ cmd_ln() {
     link_dir="$(dirname -- "${link_filename}")" || exit
     realpath_cmd="realpath"
     if [[ "$(uname)" == "Darwin" ]]; then
-        if [[ -n "$(command -v grealpath 2>/dev/null)" ]]; then
-            # On macOS, use GNU realpath as provided via `coreutils` Homebrew formula if available
+        if command -v grealpath &>/dev/null; then
+            # On macOS, use GNU realpath as provided via `coreutils`
+            # Homebrew formula if available
             realpath_cmd="grealpath"
         fi
     fi
